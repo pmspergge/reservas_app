@@ -1,0 +1,26 @@
+[
+  {
+    "id": "8edcd096-515b-4860-af9e-9ab2c9d3efc2",
+    "nombreCliente": "Juan Péreziovick",
+    "cantidadDePersonas": 4,
+    "idMesa": "mesa1",
+    "fecha": "2024-10-08T12:00:00Z",
+    "turno": "merienda"
+  },
+  {
+    "id": "22a13ae2-4d16-4890-b86b-3df944aa08cb",
+    "nombreCliente": "Victoria Gómez",
+    "cantidadDePersonas": 2,
+    "idMesa": "mesa1",
+    "fecha": "2024-10-08T12:00:00Z",
+    "turno": "cena"
+  },
+  {
+    "id": "22c00f19-a79c-45fb-9ff4-405c1213c56e",
+    "nombreCliente": "Julián Pereryra",
+    "cantidadDePersonas": 2,
+    "idMesa": "mesa1",
+    "fecha": "2024-10-08T12:00:00Z",
+    "turno": "cena"
+  }
+]
