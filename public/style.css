@@ -29,6 +29,7 @@ body {
   
   input[type="text"],
   input[type="date"],
+  input[type="password"],
   input[type="number"],
   select {
     width: calc(100% - 20px);

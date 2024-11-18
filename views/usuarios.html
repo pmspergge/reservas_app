@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservas</title>
+  <link rel="stylesheet" href="../public/style.css">
+</head>
+<body>
+  <h1>Registro de Nuevos Usuarios</h1>
+
+  <form id="form-reservas">
+    <label for="usuario">Usuario</label>
+    <input type="text" id="usuario" required><br>
+
+    <label for="nombreApellido">Nombre y Apellido</label>
+    <input type="text" id="nombreApellido" required><br>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" required><br>
+
+    <label for="dni">dni</label>
+    <input type="number" id="dni" required><br>
+    
+    <button type="button" id="btnUsuarioNuevo">Crear Usuario</button>
+  </form>
+<!--
+  <h2>Lista de Usuarios</h2>
+  <div id="listadoUsuarios"></div>
+  -->  
+
+  <script type="module" src="/public/controladorUsuarios.js"></script>
+</body>
+</html>

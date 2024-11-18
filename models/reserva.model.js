@@ -7,6 +7,8 @@ const ReservaSchema = new mongoose.Schema({
   idMesa: { type: String, required: true },
   fecha: { type: Date, required: true },
   turno: { type: String, required: true },
+
+ 
 });
 
 // Crear el modelo a partir del esquema
