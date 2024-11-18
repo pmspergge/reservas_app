@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+//import mongoose from "mongoose";
+const mongoose = require ("mongoose")
 
 // Definir el esquema de la reserva
 const ReservaSchema = new mongoose.Schema({
@@ -14,4 +15,4 @@ const ReservaSchema = new mongoose.Schema({
 // Crear el modelo a partir del esquema
 const Reserva = mongoose.model("Reserva", ReservaSchema);
 
-export default Reserva;
+module.exports= Reserva;

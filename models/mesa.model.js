@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-
+//import mongoose from "mongoose";
+const mongoose = require ("mongoose")
 // Definir el esquema de la mesa
 const MesaSchema = new mongoose.Schema({
   id: { type: String, required: true },
@@ -9,4 +9,4 @@ const MesaSchema = new mongoose.Schema({
 // Crear el modelo a partir del esquema
 const Mesa = mongoose.model("Mesa", MesaSchema);
 
-export default Mesa;
+module.exports= Mesa;

@@ -1,5 +1,7 @@
-import express from "express";
-import { servicioReservas } from "../services/servicios.js";
+//import express from "express";
+const express = require("express");
+//import { servicioReservas } from "../services/servicios.js";
+const servicioReservas = require ("../services/servicios.js")
 
 const router = express.Router();
 
@@ -100,4 +102,4 @@ router.post("/api/reservas/check-availability", async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router

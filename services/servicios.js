@@ -1,5 +1,5 @@
-import Reserva from "../models/reserva.model.js";
-
+//import Reserva from "../models/reserva.model.js";
+const Reserva =require("../models/reserva.model")
 // Función para crear una reserva
 const crearReserva = async (
   nombreCliente,
@@ -68,7 +68,7 @@ const eliminarReserva = async (id) => {
   }
 };
 
-export const servicioReservas = {
+module.exports = {
   crearReserva,
   listarReservas,
   obtenerReservaPorId,

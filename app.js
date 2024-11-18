@@ -1,8 +1,14 @@
-import express from "express";
+/*import express from "express";
 import mongoose from "mongoose";
 import rutasReservas from "./routes/rutasReservas.js";
 import dotenv from "dotenv";
-import path from "path";
+import path from "path";*/
+const express = require("express");
+const mongoose = require("mongoose");
+const rutasReservas = require("./routes/rutasReservas.js");
+const dotenv = require("dotenv");
+const path = require("path");
+
 
 dotenv.config(); // Cargar las variables de entorno desde el archivo .env
 
@@ -27,6 +33,23 @@ app.get("/", (req, res) => {
 app.use(rutasReservas);
 
 // Levantar el servidor
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(3000, () => {
+      console.log("Servidor corriendo en puerto 3000");
+  });
+}
+
+//pruebas
+app.post('/api/reservas', (req, res) => {
+  const {nombreCliente, cantidadDePersonas, fecha, turno} =req.body;
+  const _id ="abc"; 
+  res.status(201).json({
+    nombreCliente,
+    cantidadDePersonas,
+    fecha,
+    turno,
+    _id
+  })
+ });
+
+module.exports = app;
