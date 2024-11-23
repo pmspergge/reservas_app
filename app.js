@@ -1,19 +1,21 @@
-/*import express from "express";
-import mongoose from "mongoose";
-import rutasReservas from "./routes/rutasReservas.js";
-import dotenv from "dotenv";
-import path from "path";*/
 const express = require("express");
 const mongoose = require("mongoose");
 const rutasReservas = require("./routes/rutasReservas.js");
+const rutasUsuario = require('./routes/rutasUsuario.js');
+const rutaProtegida = require('./routes/rutaProtegida.js');
 const dotenv = require("dotenv");
 const path = require("path");
+const app = express();
+const PORT = 8000;
+
+//------ Autenticación-------------------///
+
+//------
 
 
 dotenv.config(); // Cargar las variables de entorno desde el archivo .env
 
-const app = express();
-const PORT = 3000;
+
 
 // Conectar a MongoDB utilizando la URI del archivo .env
 mongoose
@@ -27,14 +29,16 @@ app.use(express.json());
 app.use("/public", express.static(path.join(path.resolve(), "public")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(path.resolve(), "views", "index.html"));
+  res.sendFile(path.join(path.resolve(), "views", "ingreso.html"));
 });
 
 app.use(rutasReservas);
+app.use(rutasUsuario);
+app.use(rutaProtegida);
 
 // Levantar el servidor
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(3000, () => {
+  app.listen(8000, () => {
       console.log("Servidor corriendo en puerto 3000");
   });
 }
