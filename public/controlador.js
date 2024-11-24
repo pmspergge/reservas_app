@@ -3,7 +3,13 @@
 // Función para listar las reservas y mostrarlas en el HTML
 export async function listarReservas() {
   try {
-    const response = await fetch("/api/reservas");
+    const token = localStorage.getItem("token");
+    const response = await fetch("/api/reservas", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
     if (!response.ok) {
       throw new Error("Error al listar las reservas");
     }
@@ -43,10 +49,13 @@ export async function crearReserva(
   turno
 ) {
   try {
+    const token = localStorage.getItem("token");
+
     const response = await fetch("/api/reservas", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         nombreCliente,

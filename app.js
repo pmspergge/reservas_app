@@ -36,21 +36,8 @@ app.use(rutaProtegida);
 // Levantar el servidor
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
-    console.log("Servidor corriendo en puerto " + PORT);
+    console.log(`Servidor corriendo en puerto ${PORT}`);
   });
 }
-
-//pruebas
-app.post("/api/reservas", (req, res) => {
-  const { nombreCliente, cantidadDePersonas, fecha, turno } = req.body;
-  const _id = "abc";
-  res.status(201).json({
-    nombreCliente,
-    cantidadDePersonas,
-    fecha,
-    turno,
-    _id,
-  });
-});
 
 module.exports = app;

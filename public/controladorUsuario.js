@@ -15,13 +15,21 @@ export async function login(username, password) {
     if (!response.ok) {
       throw new Error("Error al hacer login");
     }
-    //alert("Usuario logueado correctamente");
+
+    const data = await response.json();
+    const token = data.token;
+
+    // Almacenar el token en localStorage
+    localStorage.setItem("token", token);
+
+    // Redirigir al usuario a la página principal
+    window.location.href = "/principal";
+
     return true;
   } catch (error) {
-    // alert("Error al hacer login: " + error.message);
+    alert("Error al hacer login: " + error.message);
     return false;
   }
-  //
 }
 
 export async function crearUsuario(username, password) {
