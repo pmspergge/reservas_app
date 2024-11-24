@@ -42,14 +42,7 @@ beforeAll(async () => {
                 turno: reservaData.turno,
                 _id: expect.any(String)
             }));
-        /*expect(response.body.nombreCliente).toBe(reservaData.nombreCliente);
-        expect(response.body.cantidadDePersonas).toBe(reservaData.cantidadDePersonas);
-        expect(response.body.idMesa).toBe(reservaData.idMesa);
-        expect(response.body.fecha).toBe(reservaData.fecha);
-        expect(response.body.turno).toBe(reservaData.turno);            
-        expect(response.body._id).toBeDefined();*/
-
-       // Verificamos que la reserva esté en la base de datos
+        
         const reservaGuardada = await reserva.findById(response.body._id);
         expect(reservaGuardada).toBeTruthy();
         expect(reservaGuardada.nombreCliente).toBe(reservaData.nombreCliente);
