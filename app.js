@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const rutasReservas = require("./routes/rutasReservas.js");
-const rutasUsuario = require('./routes/rutasUsuario.js');
-const rutaProtegida = require('./routes/rutaProtegida.js');
+const rutasUsuario = require("./routes/rutasUsuario.js");
+const rutaProtegida = require("./routes/rutaProtegida.js");
 const dotenv = require("dotenv");
 const path = require("path");
 const app = express();
@@ -12,10 +12,7 @@ const PORT = 8000;
 
 //------
 
-
 dotenv.config(); // Cargar las variables de entorno desde el archivo .env
-
-
 
 // Conectar a MongoDB utilizando la URI del archivo .env
 mongoose
@@ -37,23 +34,23 @@ app.use(rutasUsuario);
 app.use(rutaProtegida);
 
 // Levantar el servidor
-if (process.env.NODE_ENV !== 'test') {
-  app.listen(8000, () => {
-      console.log("Servidor corriendo en puerto 3000");
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log("Servidor corriendo en puerto " + PORT);
   });
 }
 
 //pruebas
-app.post('/api/reservas', (req, res) => {
-  const {nombreCliente, cantidadDePersonas, fecha, turno} =req.body;
-  const _id ="abc"; 
+app.post("/api/reservas", (req, res) => {
+  const { nombreCliente, cantidadDePersonas, fecha, turno } = req.body;
+  const _id = "abc";
   res.status(201).json({
     nombreCliente,
     cantidadDePersonas,
     fecha,
     turno,
-    _id
-  })
- });
+    _id,
+  });
+});
 
 module.exports = app;
