@@ -1,6 +1,4 @@
-//import express from "express";
 const express = require("express");
-//import { servicioReservas } from "../services/servicios.js";
 const servicioReservas = require("../services/servicios.js");
 const verifyToken = require("../middleware/usuarioMiddleware");
 
