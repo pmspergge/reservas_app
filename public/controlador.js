@@ -4,12 +4,12 @@
 export async function listarReservas() {
   try {
     const token = localStorage.getItem("token");
+
     const response = await fetch("/api/reservas", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
     if (!response.ok) {
       throw new Error("Error al listar las reservas");
     }
@@ -30,11 +30,21 @@ export async function listarReservas() {
             <strong>Cantidad de Personas:</strong> ${cantidadDePersonas} <br>
             <strong>Mesa:</strong> ${idMesa} <br>
             <strong>Fecha:</strong> ${new Date(fecha).toLocaleDateString()} <br>
-            <strong>Turno:</strong> ${turno} <br><br>
+            <strong>Turno:</strong> ${turno} <br>
+            <button class="btnEliminarReserva btn-eliminar" data-id="${_id}">Eliminar</button>
+            <br><br>
           </div>
         `;
         }
       );
+
+      const botonesEliminar = document.querySelectorAll(".btnEliminarReserva");
+      botonesEliminar.forEach((boton) => {
+        boton.addEventListener("click", async (event) => {
+          const reservaId = event.target.dataset.id;
+          await eliminarReserva(reservaId);
+        });
+      });
     }
   } catch (error) {
     alert("Error al listar las reservas: " + error.message);
@@ -100,6 +110,36 @@ document
       turno
     );
   });
+
+export async function eliminarReserva(reservaId) {
+  const confirmacion = confirm(
+    "¿Está seguro de que desea eliminar esta reserva?"
+  );
+  if (!confirmacion) {
+    return;
+  }
+
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(`/api/reservas/${reservaId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al eliminar la reserva");
+    }
+
+    alert("Reserva eliminada exitosamente");
+    // Actualizar el listado de reservas
+    listarReservas();
+  } catch (error) {
+    alert("Error al eliminar la reserva: " + error.message);
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   listarReservas();

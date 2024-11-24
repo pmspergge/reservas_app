@@ -107,4 +107,18 @@ router.post(
   }
 );
 
+router.delete("/api/reservas/:id", verifyToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const eliminado = await servicioReservas.eliminarReserva(id);
+    if (eliminado) {
+      res.status(200).json({ message: "Reserva eliminada" });
+    } else {
+      res.status(404).json({ error: "Reserva no encontrada" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Error al eliminar la reserva" });
+  }
+});
+
 module.exports = router;
