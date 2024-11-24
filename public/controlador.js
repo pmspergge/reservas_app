@@ -95,3 +95,11 @@ document
 document.addEventListener("DOMContentLoaded", () => {
   listarReservas();
 });
+
+function cerrarSesion() {
+  localStorage.removeItem("token");
+  window.location.href = "/";
+}
+document
+  .getElementById("btnCerrarSesion")
+  .addEventListener("click", cerrarSesion);
